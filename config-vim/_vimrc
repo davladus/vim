@@ -1,0 +1,67 @@
+execute pathogen#infect()
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=999 columns=999
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
+
+
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+
+
+
+syntax on
+filetype plugin indent on
+set tabstop=4
+            
+
+colorscheme molokai
+set expandtab
+set backupdir=$TEMP,$TMP
+set directory=$TEMP,$TMP
+set guifont=consolas:h14
+set langmenu=en_US
+let $LANG = 'en_US'
+
+
+set backspace=indent,eol,start
+set whichwrap+=<,>,[,]
+set whichwrap+=h,l
+
+"store lots of :cmdline history
+set history=1000
+
+set showcmd     "show incomplete cmds down the bottom
+set showmode    "show current mode down the bottom
+
+set incsearch   "find the next match as we type the search
+
+set number      "add line numbers
+set showbreak=...
+
+
+
+set ignorecase
+set smartcase
+set incsearch
+
+
+
+
+
+
+
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+

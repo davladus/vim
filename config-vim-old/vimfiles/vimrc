@@ -1,0 +1,82 @@
+execute pathogen#infect()
+execute pathogen#helptags()
+
+syntax on
+filetype plugin indent on
+
+set tabstop=4
+colorscheme Mustang
+set backupdir=$TEMP,$TMP
+set directory=$TEMP,$TMP
+set guifont=consolas:h14
+
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+"au GUIEnter * simalt ~x "x on an English Windows version. n on a French one
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=999 columns=999
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
+
+
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+
+
+set nocompatible
+
+"allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+set whichwrap+=<,>,[,]
+set whichwrap+=h,l
+
+"store lots of :cmdline history
+set history=1000
+
+set showcmd     "show incomplete cmds down the bottom
+set showmode    "show current mode down the bottom
+
+set incsearch   "find the next match as we type the search
+set hlsearch    "hilight searches by default
+
+set number      "add line numbers
+set showbreak=...
+
+
+
+set ignorecase
+set smartcase
+set incsearch
+
+set clipboard=unnamed
+
+
+"  
+"
+"
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
+
+
+map <C-p> :CtrlP<cr>
+map <C-r> :CtrlPMRUFiles<cr>
+map <C-e> :Eval<cr>
+
+
